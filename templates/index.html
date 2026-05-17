@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income & Spending Survey</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Income & Spending Survey</h1>
+        <p class="subtitle">Help us understand how you manage your monthly income.</p>
+
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" min="18" max="100" required placeholder="e.g. 28">
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="total_income">Total Monthly Income ($)</label>
+                <input type="number" id="total_income" name="total_income" min="0" step="0.01" required placeholder="e.g. 5000">
+            </div>
+
+            <div class="expenses-section">
+                <h2>Monthly Expenses</h2>
+                <p>Check any category you spend on and enter the amount.</p>
+
+                <div class="expense-row">
+                    <input type="checkbox" id="utilities" name="utilities" value="on">
+                    <label for="utilities">Utilities</label>
+                    <input type="number" name="utilities_amount" min="0" step="0.01" placeholder="Amount ($)">
+                </div>
+
+                <div class="expense-row">
+                    <input type="checkbox" id="entertainment" name="entertainment" value="on">
+                    <label for="entertainment">Entertainment</label>
+                    <input type="number" name="entertainment_amount" min="0" step="0.01" placeholder="Amount ($)">
+                </div>
+
+                <div class="expense-row">
+                    <input type="checkbox" id="school_fees" name="school_fees" value="on">
+                    <label for="school_fees">School Fees</label>
+                    <input type="number" name="school_fees_amount" min="0" step="0.01" placeholder="Amount ($)">
+                </div>
+
+                <div class="expense-row">
+                    <input type="checkbox" id="shopping" name="shopping" value="on">
+                    <label for="shopping">Shopping</label>
+                    <input type="number" name="shopping_amount" min="0" step="0.01" placeholder="Amount ($)">
+                </div>
+
+                <div class="expense-row">
+                    <input type="checkbox" id="healthcare" name="healthcare" value="on">
+                    <label for="healthcare">Healthcare</label>
+                    <input type="number" name="healthcare_amount" min="0" step="0.01" placeholder="Amount ($)">
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Survey</button>
+        </form>
+    </div>
+
+    <script>
+        // Disable amount inputs when checkbox is unchecked
+        document.querySelectorAll('.expense-row input[type="checkbox"]').forEach(function(checkbox) {
+            var amountInput = checkbox.closest('.expense-row').querySelector('input[type="number"]');
+            amountInput.disabled = true;
+
+            checkbox.addEventListener('change', function() {
+                amountInput.disabled = !this.checked;
+                if (!this.checked) amountInput.value = '';
+            });
+        });
+    </script>
+</body>
+</html>

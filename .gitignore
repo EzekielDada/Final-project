@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+data/users.csv
+analysis/charts/
+*.egg-info/
+.DS_Store
