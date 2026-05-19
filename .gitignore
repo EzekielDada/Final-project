@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 .env
+start.sh
 data/users.csv
 analysis/charts/
 *.egg-info/
