@@ -22,16 +22,7 @@ class User:
         }
 
     def to_csv_row(self):
-        return [
-            self.age,
-            self.gender,
-            self.total_income,
-            self.utilities,
-            self.entertainment,
-            self.school_fees,
-            self.shopping,
-            self.healthcare,
-        ]
+        return list(self.to_dict().values())
 
     @staticmethod
     def csv_headers():

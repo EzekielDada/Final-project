@@ -3,7 +3,8 @@ import os
 from pymongo import MongoClient
 from user import User
 
-client = MongoClient("mongodb://localhost:27017/")
+MONGO_URI = os.environ.get("MONGO_URI", "mongodb://localhost:27017/")
+client = MongoClient(MONGO_URI)
 db = client["survey_db"]
 collection = db["users"]
 
