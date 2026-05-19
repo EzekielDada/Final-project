@@ -2,6 +2,12 @@
 
 A Flask web application that collects participant income and spending data for healthcare product market research. Data is stored in MongoDB, exported to CSV, and analyzed in a Jupyter notebook.
 
+## Live App
+
+The application is deployed on AWS EC2 and can be accessed at:
+
+**http://13.51.70.161:5000**
+
 ---
 
 ## Project Structure
