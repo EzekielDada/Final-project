@@ -1,10 +1,12 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from user import User
 
 app = Flask(__name__)
 
-client = MongoClient("mongodb://localhost:27017/")
+MONGO_URI = os.environ.get("MONGO_URI", "mongodb://localhost:27017/")
+client = MongoClient(MONGO_URI)
 db = client["survey_db"]
 collection = db["users"]
 
@@ -38,4 +40,4 @@ def success():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=False)
